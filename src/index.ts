@@ -1,60 +1,23 @@
-import * as THREE from 'three'
-import { params } from './params'
-import { 
-    resize, 
-    makeRenderer, 
-    makeScene, 
-    makePerspectiveCamera, 
-    makeOrbitControls 
-} from './utils'
+import * as p5 from 'p5'
 
 // -------------- SETUP ---------------- //
 
-// Canvas
-const canvas = document.getElementById('three');
-
-// Scene
-const scene = makeScene();
-
-// Camera
-const camera = makePerspectiveCamera(75, 1, 100);
-camera.position.z = 3;
-scene.add(camera);
-
-// Renderer
-const renderer = makeRenderer(canvas);
-
-// Resize Handling
-window.addEventListener('resize', resize(params, camera, renderer));
-
-// Orbit Controls
-const controls = makeOrbitControls(camera, canvas);
-
-// -------------- TEXTURES, OBJECTS, ETC. ---------------- //
-
-// Textures
-// const textureLoader = new THREE.TextureLoader();
-
-// BASE CUBE
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial()
-)
-scene.add(cube);
-
-// -------------- REFRESH & UPDATE CYCLE ---------------- //
-
-// const clock = new THREE.Clock();
-
-const tick = () => 
-{
-    // const elapsedTime = clock.getElapsedTime();
-
-    controls.update();
-
-    renderer.render(scene, camera);
-
-    window.requestAnimationFrame(tick);
+const size = {
+	width: 100,
+	height: 100
 }
 
-tick();
+const sketch = (p: any) => {
+	p.setup = () => {
+		p.createCanvas(size.width, size.height);
+	}
+
+	p.draw = () => {
+		p.background(0);
+		p.fill(255);
+		p.circle(10, 10, 10);
+	}
+}
+
+const container = document.getElementById('p5');
+const instance = new p5(sketch, container);
