@@ -1,4 +1,4 @@
-# threejs_template
+# p5_template
 A basic, dev-mode template for P5.js with Webpack, Typescript and a webpack-web-server. Makes it simple to start playing with a basic P5.js setup without having to trudge through Webpack or P5.js setup.  
 
 ## Usage
